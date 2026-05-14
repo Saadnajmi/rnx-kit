@@ -22,6 +22,7 @@ export type Options = Pick<
   | "minifySyntax"
   | "pure"
   | "target"
+  | "treeShaking"
 > & {
   analyze?: boolean | "verbose";
   fabric?: boolean;
@@ -276,6 +277,7 @@ export function MetroSerializer(
         pure: buildOptions?.pure,
         sourcemap: Boolean(options.sourceMapUrl) && "linked",
         target,
+        treeShaking: buildOptions?.treeShaking,
         supported: (() => {
           if (typeof target !== "string" || !target.startsWith("hermes")) {
             return undefined;
